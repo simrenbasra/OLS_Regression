@@ -7,12 +7,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 
+
 class Data_Preprocess():
 
 ##########################################################################
 # Init
 ##########################################################################
     def __init__(self, dataframe):
+        ''' 
+            Description:
+                Initialises the class with a dataframe 
+
+            Inputs:
+                dataframe - dataframe 
+
+            Outputs:
+                data_raw - dataframe (not to be modified in other objects)
+                    data - dataframe (to be modified in other objects)
+        '''
         self.data_raw = dataframe
         self.data = dataframe
 
@@ -21,6 +33,22 @@ class Data_Preprocess():
 ##########################################################################
 
     def get_dummies(self,threshold=None, drop_first=True):
+        ''' 
+            Description:
+                To encode categorical columns
+
+            Inputs:
+                threshold - default set to None 
+                          - in case there are categorical columns with a large number of categories
+                          - prevents number of columns from getting too large
+
+               drop_first - default set to True
+                          - drops one category from each dummied variable, required to drop multi-collinearity
+                          - if choose not to drop-first (random), user must drop one category for each dummy varaible themselves
+
+            Outputs:
+                dummy_data - returns dataframe where categorical columns are dummified
+        '''
         cat_cols = self.data.select_dtypes(include='object').columns
         
         # cases where the number of dummies is too large
@@ -41,8 +69,19 @@ class Data_Preprocess():
 ##########################################################################
 
     def std_scaling(self):
-        num_cols = self.data.select_dtypes(exclude='object').columns
+        ''' 
+            Description:
+                To scale numerical columns
 
+            Inputs:
+                None
+
+            Outputs:
+                Dataframe where numerical columns are scaled
+        '''
+                
+        num_cols = self.data.select_dtypes(exclude='object').columns
+        # using std scaling (z score) not to distort correlations in data
         scaler = StandardScaler()
 
         for col in num_cols:
