@@ -1,55 +1,69 @@
-# Linear-Regression Class Builder
+----
+# Stats Linear Regression 
+----
+This project is a simple the implementation of an Ordinary Least Squares (OLS) regression model, including preprocessing the data and exploring the effects of Principal Component Analysis (PCA) on the model's performance.
 
-This project is a simple implementation of a linear regression model class builder applied to a car dataset. The class allows users to easily create a linear regression model, train it on the dataset and make predictions. The car dataset typically includes features such as carbody type, aspiration and engine type which are used to predict price of cars.
+## Project Overview
 
-## Getting Started
+This project aims to:
 
-### Class Methods
+- Data Preprocessing: Prepare the data set for OLS regression by making all columns numeric, scaling and transforming any data.
+- Implement OLS Regression: Build a OLS regression model
+- Explore PCA: Assess effect PCA has on OLS regression model
+- Evaluate Model Performance: Analyse the performance of the model using R-squared, MSE (mean squared error) and MAE (mean absolute error).
 
-* __init__(self, dataframe, target)
-    - Initialises the linear regression model with the provided dataframe and name of target variable.
-    - dataframe : of type pandas DataFrame
-    - target : name of target column in dataset 
+## Detailed Steps
 
-* get_dummies(self,threshold=None, drop=True)
-    - Produces dummy variable for categorical columns
-    - threshold : int, if number of dummies greater than threshold value, category column is to be dropped. Optional argument.
-    - drop: if True drops the first value when creating dummies. Default value is True.
- 
-* x_modelling(self,to_drop=None)
-    - Returns all feature variables
-    - to_drop : inputs name of columns to drop. Optional argument.
+1. **Data Preprocessing**
 
-* get_heatmap(self,vif_cutoff=5)
-    - generates correlation heatmap to show correlation between independent features
-    - calculates VIF values before generating correlation heatmap, if VIF values are greater than vut_off columns are deleted from the dataframe.
-    - vif_cutoff : cut off for vif values, default value is 5
+    - **Convert All Columns to Numeric:** Ensure all columns in the dataset are numeric by encoding categorical variables.
+    - **Scaling Data:** Standardise the data using standard scaler so all columns are on the same scale and all features are on a 'level playing field'.
+    - **Data Transformation:** Apply any transforamtions to ensure data is ready for OLS regression modelling.
 
-* build_OLS_model(self)
-    - Builds and fits linear regression model using statsmodel.api 
-    - Adds constant to all independent features
 
-* assess_accuracy(self,final_model)
-    - Assesses accuracy of model through 
-        * Hist of residuals
-        * Shapiro-Wilk Hypothesis Test 
-        * QQ Plot
-        * Homo/Hetero-scedasticity of Residuals
-    - returns graphs 
-    - final_model: pass final model for assessment
+2. **Implement OLS Regression**
+    
+    - Build the Model: Use statsmodels to build the OLS regression model.
+    - Assess model meets the 4 assumptions of linear regression:
+        - Assumption 1: A linear relationship between X (independent variable/s) and y (dependent variable)
+        - Assumption 2: Independent variables are independent to each other, there is no collinearity or multicollinearity.
+        - Assumption 3: Residuals should be normally distributed.
+        - Assumption 4: Residuals should show homoscedasticity.
 
-### Installing
+3. **Explore PCA**
 
-### Executing program
+    - Apply PCA to data: Determine optimal number of principal components and perform PCA to reduce the number of features and multicollinearity. 
+    - Assess impace of PCA on OLS regression: Re-build the OLS regression model using principal components and compare the perfomance of the model to the base model.
 
+4. **Evaluate Performance of Each Model**
+
+    - R-squared: Measures the amount of variance in the target variable explained by the independent variables.
+    - Mean Squared Error (MSE): Measure the average squared difference between the estimated values and the actual value.
+    - Mean Absolute Error (MAE): Measure the average of the errors in a set of predictions to the actual values.
+
+## Files and Directories
+
+- data/: Directory containing the dataset.
+- notebooks/: Notebooks for data preprocessing, model building and analysis.
+- src/: Python scripts for data preprocessing and linear model building.
+
+## How to run
+
+1. Clone the Repository:
+
+        git clone https://github.com/simrenbasra/Stats_Linear_Regression.git
+
+2. Install dependencies
+
+        pip install -r requirements.txt
+
+3. Run the notebooks 
+    Open the notebooks in the notebooks/directory and follow the instructions
+    
 
 ## Authors
-
-Contributors names:
-
-Simren Basra
+Contributors name/s: Simren Basra
 
 ## Version History
-
 * 0.1
     * Initial Release
