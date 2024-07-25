@@ -88,13 +88,13 @@ class Linear_Model_Builder():
         plt.show()
 
 ##########################################################################
-# Choosing Modelling Features (X)
+# Choosing Modelling Variables (X)
 ##########################################################################
 
     def x_modelling(self,to_drop=None): 
         ''' 
             Description:
-                Produce heatmap to assess co-linearity in addition to performing vif to remove multi-colinearity
+                To make modifications to X variables.
 
             Inputs:
                 to_drop - default set to None
