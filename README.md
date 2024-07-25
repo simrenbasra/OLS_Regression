@@ -1,5 +1,5 @@
 ----
-# Stats Linear Regression 
+# OLS Regression 
 ----
 This project is a simple the implementation of an Ordinary Least Squares (OLS) regression model, including preprocessing the data and exploring the effects of Principal Component Analysis (PCA) on the model's performance.
 
