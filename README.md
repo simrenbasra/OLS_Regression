@@ -12,6 +12,13 @@ This project aims to:
 - Explore PCA: Assess effect PCA has on OLS regression model
 - Evaluate Model Performance: Analyse the performance of the model using R-squared, MSE (mean squared error) and MAE (mean absolute error).
 
+## Dataset 
+
+Dataset is from Kaggle, please refer to link below:
+
+- https://www.kaggle.com/datasets/hellbuoy/car-price-prediction/data
+
+
 ## Detailed Steps
 
 1. **Data Preprocessing**
@@ -55,7 +62,7 @@ This project aims to:
 
 2. Install dependencies
 
-        pip install -r requirements.txt
+        conda env create -f conda_env.yml
 
 3. Run the notebooks 
     Open the notebooks in the notebooks/directory and follow the instructions
